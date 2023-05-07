@@ -167,6 +167,17 @@ public class UserProductsController {
                 System.out.println(product_id);
             }
         }
+        refresh();
+    }
+    
+    public void refresh() {
+        Task<ObservableList<Product>> getAllProductsTask = new Task<ObservableList<Product>>() {
+            @Override
+            protected ObservableList<Product> call() {
+                return FXCollections.observableArrayList(Datasource.getInstance().getAllProducts());
+            }
+        };
+        getAllProductsTask.run();
         tableProductsPage.refresh();
     }
 
