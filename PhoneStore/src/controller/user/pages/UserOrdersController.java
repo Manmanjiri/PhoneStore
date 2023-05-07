@@ -127,10 +127,21 @@ public class UserOrdersController {
 
                 new Thread(returnOrderTask).start();
                 System.out.println(order_id);
-                tableOrdersPage.refresh();
+                refresh();
             }
         }
 
+    }
+    
+     public void refresh() {
+        Task<ObservableList<Order>> getAllOrdersTask = new Task<ObservableList<Order>>() {
+            @Override
+            protected ObservableList<Order> call() {
+                return FXCollections.observableArrayList(Datasource.getInstance().getOrders());
+            }
+        };
+        getAllOrdersTask.run();
+        tableOrdersPage.refresh();
     }
 
     public void btnOrdersSearchOnAction(ActionEvent actionEvent) {
