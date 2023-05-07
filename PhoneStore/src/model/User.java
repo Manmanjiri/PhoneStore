@@ -7,7 +7,6 @@ public class User {
     private String username;
     private String email;
     private String password;
-    private String salt;
 
     public String getFullname() {
         return fullname;
@@ -17,14 +16,8 @@ public class User {
         this.fullname = fullname;
     }
 
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
+  
+   
     private int admin;
     private String status;
 
